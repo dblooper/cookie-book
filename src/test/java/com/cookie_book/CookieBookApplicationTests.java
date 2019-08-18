@@ -10,7 +10,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class CookieBookApplicationTests {
 
     @Test
-    public void contextLoads() {
+    public void firstTest() {
+        System.out.println("Hello test world!");
     }
-
 }
