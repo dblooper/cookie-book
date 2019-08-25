@@ -19,9 +19,11 @@ public class CookBook {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    private long libraryId;
+    private long cookBookId;
 
     private String name;
+
+    private boolean deleted;
 
     @ManyToMany(cascade = CascadeType.ALL,
                 mappedBy = "cookBookSet")
@@ -44,4 +46,7 @@ public class CookBook {
     )
     private List<Category> categoryList = new ArrayList<>();
 
+    public void setDeleted() {
+        this.deleted = true;
+    }
 }
