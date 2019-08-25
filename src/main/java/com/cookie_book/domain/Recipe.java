@@ -25,6 +25,8 @@ public class Recipe {
     private byte portions;
     private String ingredients;
     private String tools;
+
+    @Column(columnDefinition = "TEXT")
     private String preparation;
 
     @ManyToOne
