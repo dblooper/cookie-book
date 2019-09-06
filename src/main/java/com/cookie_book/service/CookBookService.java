@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class CookBookService {
-
     private CookBookRepository cookBookRepository;
 
     @Autowired

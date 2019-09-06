@@ -32,7 +32,8 @@ public class Category {
     )
     private List<Recipe> recipeList = new ArrayList<>();
 
-    @ManyToOne
-    @JoinColumn(name = "recipe_id")
-    private Recipe recipe;
+    public Category(List<CookBook> cookBookList, List<Recipe> recipeList) {
+        this.cookBookList = cookBookList;
+        this.recipeList = recipeList;
+    }
 }

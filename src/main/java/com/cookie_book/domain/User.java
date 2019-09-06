@@ -1,13 +1,9 @@
 package com.cookie_book.domain;
 
-import com.cookie_book.domain.dto.CommentDto;
-import com.cookie_book.domain.dto.CookBookDto;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -104,6 +100,7 @@ public class User {
         public User build() {
             return new User(name, email, status, cookBookSet, commentList);
         }
+
     }
 
 

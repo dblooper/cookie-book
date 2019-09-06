@@ -1,6 +1,5 @@
 package com.cookie_book.domain;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -13,7 +12,6 @@ import java.util.Set;
 @Entity
 @Table(name = "cook_books")
 @NoArgsConstructor
-@AllArgsConstructor
 @Getter
 public class CookBook {
     @Id
@@ -48,5 +46,43 @@ public class CookBook {
 
     public void setDeleted() {
         this.deleted = true;
+    }
+
+    private CookBook(String name, boolean deleted, Set<User> userSet, List<Category> categoryList) {
+        this.name = name;
+        this.deleted = deleted;
+        this.userSet = userSet;
+        this.categoryList = categoryList;
+    }
+
+    public static class Builder {
+        private String name;
+        private boolean deleted;
+        private Set<User> userSet;
+        private List<Category> categoryList;
+
+        public Builder name(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public Builder deleted(boolean deleted) {
+            this.deleted = deleted;
+            return this;
+        }
+
+        public Builder userSet(Set<User> userDtoSet) {
+            this.userSet = userDtoSet;
+            return this;
+        }
+
+        public Builder categoryList(List<Category> categoryDtoList) {
+            this.categoryList = categoryDtoList;
+            return this;
+        }
+
+        public CookBook build() {
+            return new CookBook(name, deleted, userSet, categoryList);
+        }
     }
 }
