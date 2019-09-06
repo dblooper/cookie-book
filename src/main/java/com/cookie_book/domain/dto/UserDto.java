@@ -1,34 +1,30 @@
 package com.cookie_book.domain.dto;
 
-import com.cookie_book.domain.Comment;
-import com.cookie_book.domain.CookBook;
-import com.cookie_book.domain.User;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
-
-import javax.persistence.CascadeType;
-import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
+import lombok.NoArgsConstructor;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+@NoArgsConstructor
 @Getter
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class UserDto {
 
     private long userId;
+    @JsonProperty("name")
     private String name;
+    @JsonProperty("email")
     private String email;
     private byte status;
-    private Set<CookBookDto> cookBookSet;
-    private List<CommentDto> commentList;
+    private Set<CookBookDto> cookBookSet = new HashSet<>();
+    private List<CommentDto> commentList = new ArrayList<>();
 
-    public UserDto(String name, String email) {
-        this.name = name;
-        this.email = email;
-    }
-
-    public UserDto(String name, String email, byte status, Set<CookBookDto> cookBookSet, List<CommentDto> commentList) {
+    public UserDto(long userId, String name, String email, byte status, Set<CookBookDto> cookBookSet, List<CommentDto> commentList) {
+        this.userId = userId;
         this.name = name;
         this.email = email;
         this.status = status;
@@ -41,8 +37,8 @@ public class UserDto {
         private String name;
         private String email;
         private byte status;
-        private Set<CookBookDto> cookBookSet;
-        private List<CommentDto> commentList;
+        private Set<CookBookDto> cookBookSet = new HashSet<>();
+        private List<CommentDto> commentList = new ArrayList<>();
 
         public Builder userId(long userId) {
             this.userId = userId;
@@ -75,7 +71,7 @@ public class UserDto {
         }
 
         public UserDto build() {
-            return new UserDto(name, email, status, cookBookSet, commentList);
+            return new UserDto(userId, name, email, status, cookBookSet, commentList);
         }
     }
 }

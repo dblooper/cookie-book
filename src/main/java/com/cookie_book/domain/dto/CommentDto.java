@@ -1,11 +1,10 @@
 package com.cookie_book.domain.dto;
 
-import com.cookie_book.domain.Recipe;
-import com.cookie_book.domain.User;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
+@NoArgsConstructor
+@Getter
 public class CommentDto {
     private long commentId;
     private byte rating;
